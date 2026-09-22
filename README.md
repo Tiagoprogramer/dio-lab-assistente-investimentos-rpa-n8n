@@ -154,7 +154,7 @@ dio-lab-assistente-investimentos-rpa-n8n/
 ```
 ## Demonstração do Projeto
 
-O fluxo foi validado de ponta a ponta, desde a extração dos dados pelo script Python até a geração do briefing pelo Agente de IA e o envio automático por e-mail.
+O fluxo foi validado de ponta a ponta, desde a extracao dos dados pelo script Python até a geração do briefing pelo Agente de IA e o envio automático por e-mail.
 
 ### Workflow executado no N8N
 
