@@ -152,11 +152,65 @@ dio-lab-assistente-investimentos-rpa-n8n/
     ├── index.html
     └── data.csv
 ```
+
+## Erros Encontrados e Correções Aplicadas
+
+Durante a construção e validação do workflow foram encontrados alguns desafios técnicos. Os principais problemas e respectivas soluções foram:
+
+### 1. Comunicação entre Google Colab e N8N local
+
+**Problema:**  
+O N8N estava sendo executado localmente em `localhost`, portanto o Google Colab não conseguia acessar diretamente o Webhook.
+
+**Solução:**  
+Foi utilizado um túnel HTTPS com Cloudflare para disponibilizar temporariamente o Webhook do N8N na internet, permitindo que o script Python executado no Colab enviasse os dados por uma requisição POST.
+
+---
+
+### 2. Erros durante o envio para o Webhook
+
+**Problema:**  
+Durante os primeiros testes ocorreram falhas na requisição HTTP, incluindo erro de timeout e problemas na configuração da URL e dos parâmetros do `requests.post()`.
+
+**Solução:**  
+A URL do Webhook de teste foi corrigida e a requisição Python foi ajustada, incluindo o envio do JSON e o cabeçalho `Content-Type: application/json`. Após os ajustes, o Webhook passou a retornar status HTTP `200`.
+
+---
+
+### 3. Integração com o Agente de IA
+
+**Problema:**  
+A primeira versão do node Agent utilizada no N8N apresentou incompatibilidade com o modelo de linguagem configurado. Também foi testada a API da OpenAI, porém a conta utilizada não possuía créditos disponíveis para chamadas da API.
+
+**Solução:**  
+O node Agent foi atualizado para uma versão compatível e o Google Gemini foi utilizado como modelo de linguagem do projeto. Também foi selecionado um modelo compatível com as instruções de sistema utilizadas no agente.
+
+---
+
+### 4. Referência incorreta entre nodes
+
+**Problema:**  
+Durante a validação final, o node responsável pelo resultado fazia referência a um node que havia sido renomeado ou substituído durante o desenvolvimento.
+
+**Solução:**  
+A expressão foi atualizada para utilizar corretamente os dados produzidos pelo node `Código - Formatar E-mail por Cliente`.
+
+---
+
+### Resultado da depuração
+
+Após as correções, o fluxo foi validado de ponta a ponta:
+
+**Python/RPA → Webhook → Regras de negócio → Agente de IA → Formatação HTML → Gmail → Resultado final**
+
+As evidências da execução e do e-mail recebido estão apresentadas na seção de demonstração deste projeto.
+
+
 ## Demonstração do Projeto
 
 O fluxo foi validado de ponta a ponta, desde a extração dos dados pelo script Python até a geração do briefing pelo Agente de IA e o envio automático por e-mail.
 
-### Workflow executado no N8N
+### Workflow executado no n8n
 
 A execução abaixo demonstra o processamento dos clientes, aplicação das regras de negócio, geração do conteúdo pelo Agente de IA e envio pelo Gmail.
 
