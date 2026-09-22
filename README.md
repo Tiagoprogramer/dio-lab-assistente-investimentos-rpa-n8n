@@ -127,18 +127,17 @@ O Agente de IA do N8N foi integrado ao Google Gemini para gerar dinamicamente um
 - [x] Repositório forkado com o workflow N8N implementado
 - [x] Workflow N8N exportado em `n8n/workflow.json`
 - [x] Script de RPA integrado ao Webhook do N8N
-- [ ] Print ou vídeo demonstrando o fluxo funcionando de ponta a ponta
-
+- [x] Print ou vídeo demonstrando o fluxo funcionando de ponta a ponta
 ### Desafio Completo
 
-- [ ] Todos os itens do MVP
+- [x] Todos os itens do MVP
 - [x] Integração com Agente de IA no N8N
 - [x] Mensagens geradas dinamicamente via LLM
 - [x] Integração com Gmail para envio automático do briefing
 - [x] Processamento das opções de investimento conforme perfil e saldo
 - [x] Documentação das principais decisões técnicas no README
 
-> O item de demonstração será concluído com a inclusão de evidências da execução do workflow no repositório.
+
 
 ## Estrutura do Repositório
 
@@ -153,6 +152,22 @@ dio-lab-assistente-investimentos-rpa-n8n/
     ├── index.html
     └── data.csv
 ```
+## Demonstração do Projeto
+
+O fluxo foi validado de ponta a ponta, desde a extração dos dados pelo script Python até a geração do briefing pelo Agente de IA e o envio automático por e-mail.
+
+### Workflow executado no N8N
+
+A execução abaixo demonstra o processamento dos clientes, aplicação das regras de negócio, geração do conteúdo pelo Agente de IA e envio pelo Gmail.
+
+![Workflow N8N executado com sucesso](docs/workflow-sucesso.png)
+
+### Briefing recebido por e-mail
+
+Como resultado final do workflow, o cliente recebe um briefing educacional personalizado de acordo com seu perfil, saldo disponível e opções de investimento compatíveis.
+
+![Briefing educacional recebido por e-mail](docs/email-briefing.png)
+
 
 ## Prompts Úteis para Copilotos de IA
 
@@ -163,7 +178,7 @@ dio-lab-assistente-investimentos-rpa-n8n/
 | Debugar erros | "Meu script Python está dando erro X, o que pode ser?" |
 | Montar workflow | "Como configuro um webhook no N8N para receber dados JSON?" |
 
-## Referências
+## Links e Referencias
 
 - [Documentação do N8N](https://docs.n8n.io/)
 - [BeautifulSoup: Web Scraping com Python](https://realpython.com/beautiful-soup-web-scraper-python/)
